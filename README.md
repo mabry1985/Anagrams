@@ -1,18 +1,19 @@
-# _Portfolio Landing Page_
+# Anagram Finder
 
-#### _A landing page for my portfolio, with About Me and project links, 05-31-2019_
+#### _An anagram/antigram finder 07-19-2019_
 
 #### By _**Josh Mabry**_
 
 ## Description
 
-_A landing page for my portfolio, with About Me and project links._
+_Enter in two words are phrases and see if they are anagrams, antigrams, or neither_
 
 ## Setup/Installation Requirements
 
-* _Download "landing-page" folder_
-* _Open folder_
-* _Open index.html in your favorite browser(Chrome)_
+* _Clone or download this repo_
+* _Open console and cd to folder_
+* _run "ruby lib/anagram.rb_
+* _follow prompts_
 
 ## Known Bugs
 
@@ -24,7 +25,7 @@ _Contact mabry1985@gmail.com if you run into any issues_
 
 ## Technologies Used
 
-_I used HTML Bootstrap and CSS to create this project_
+_Ruby_
 
 ### License
 

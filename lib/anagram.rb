@@ -3,7 +3,7 @@
   require 'ruby-dictionary'
 
 class Word
-  attr_accessor(:word, :anagram)
+  attr_accessor(:word, :anagram, :antigram)
 
   def initialize(word)
       @word = word
@@ -17,7 +17,7 @@ class Word
       other_word_exists = @dictionary.exists?(other_word)
       if ((word_exists === true) & (other_word_exists === true))
       else
-      puts error_message = "According to my research one of these is not a real word, if you think you've recieved this error for a real word email mabry1985@gmail.com"
+      error_message = "According to my research one of these is not a real english word, if you think you've recieved this error for a real word email mabry1985@gmail.com"
       error_message
       end
   end
@@ -48,13 +48,11 @@ class Word
   def antigram?(other_word)
     word_array = @word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
     other_word_array = other_word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
-    # binding.pry
     if word_array.length >= other_word_array.length
       x = 0
       while (x < word_array.length)
           word_array.each do |letter|
             other_word_array.each do |i|
-            # binding.pry
               if ((i != letter) & (@antigram === true))
                 @antigram = true
                 x += 1
@@ -71,7 +69,6 @@ class Word
         other_word_array.each do |letter|
           word_array.each do |i|
             if ((i != letter) & (@antigram === true))
-              # binding.pry
               @antigram = true
               x += 1
             elsif ((i === letter))
@@ -84,14 +81,4 @@ class Word
     end
     @antigram
   end
-
-
 end
-
-# puts "Enter two words to see if they are anagrams"
-# puts "Enter first word"
-# first_word = gets.chomp
-# puts "Enter second word"
-# second_word = gets.chomp
-# word_object = Word.new(first_word)
-# word_object.anagram?(second_word)
