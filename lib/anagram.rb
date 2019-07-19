@@ -23,12 +23,13 @@ class Word
   end
 
   def anagram?(other_word)
-    word_array = @word.downcase.split('').gsub!(/[“”’.…!,?'"$-=()#]/, '').delete(' ')
-    other_word_array = other_word.downcase.split('').gsub!(/[“”’.…!,?'"$-=()#]/, '').delete(' ')
-    if @word.length === other_word.length
+    word_array = @word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
+    other_word_array = other_word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
+    if word_array.length === other_word_array.length
       x = 0
       while (x < word_array.length)
         other_word_array.delete_if do |letter|
+          binding.pry
           if ((word_array[x] === letter) & (other_word_array.length > 0))
             @anagram = true
             x += 1
@@ -46,17 +47,34 @@ class Word
   end
 
   def antigram?(other_word)
-    word_array = @word.downcase.split('')
-    other_word_array = other_word.downcase.split('')
+    word_array = @word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
+    other_word_array = other_word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
+    # binding.pry
     x = 0
-    while (x < word_array.length)
-      word_array.each do |letter|
-        if ((other_word_array[x] != letter) & (word_array.length > 0) & (@antigram === true))
-          @antigram = true
-          x += 1
-        elsif ((other_word_array[x] === letter))
-          @antigram = false
-          return @antigram
+    if word_array.length >= other_word_array.length
+      while (x < word_array.length)
+        word_array.each do |letter|
+          binding.pry
+          if ((other_word_array[x] != letter) & (@antigram === true))
+            @antigram = true
+            x += 1
+          elsif ((other_word_array[x] === letter))
+            @antigram = false
+            return @antigram
+          end
+        end
+      end
+    elsif word_array.length < other_word_array.length
+      while (x < other_word_array.length)
+        other_word_array.each do |letter|
+          if ((word_array[x] != letter) & (@antigram === true))
+            binding.pry
+            @antigram = true
+            x += 1
+          elsif ((word_array[x] === letter))
+            @antigram = false
+            return @antigram
+          end
         end
       end
     end
