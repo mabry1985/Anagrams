@@ -17,14 +17,14 @@ class Word
       other_word_exists = @dictionary.exists?(other_word)
       if ((word_exists === true) & (other_word_exists === true))
       else
-      error_message = "According to my research one of these is not a real word, if you think you've recieved this error for a real word email mabry1985@gmail.com"
+      puts error_message = "According to my research one of these is not a real word, if you think you've recieved this error for a real word email mabry1985@gmail.com"
       error_message
       end
   end
 
   def anagram?(other_word)
-    word_array = @word.downcase.split('')
-    other_word_array = other_word.downcase.split('')
+    word_array = @word.downcase.split('').gsub!(/[“”’.…!,?'"$-=()#]/, '').delete(' ')
+    other_word_array = other_word.downcase.split('').gsub!(/[“”’.…!,?'"$-=()#]/, '').delete(' ')
     if @word.length === other_word.length
       x = 0
       while (x < word_array.length)

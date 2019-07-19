@@ -27,4 +27,32 @@ describe('#anagram/antigram finder') do
   expect(ripped.antigram?('dip')).to(eq(false))
   end
 
+  it ('should return false if the word is not an antigram') do
+  expect(ripped.antigram?('i')).to(eq(false))
+  end
+
+end
+
+describe ('#anagram/antigram finder for multiple word input') do
+
+  it ('should return true if multiple words entered are anagrams') do
+    phrase = Word.new('Astronomer')
+  expect (phrase.anagram?('Moon starer')).to(eq(true))
+  end
+
+  it ('should return true if multiple words entered are anagrams') do
+    phrase = Word.new('Clint Eastwood')
+  expect (phrase.anagram?('Old West Action')).to(eq(true))
+  end
+
+  it ('should return true if multiple words entered are anagrams') do
+    phrase = Word.new('Astronomer')
+  expect (phrase.antigram?('Dip flip hip')).to(eq(true))
+  end
+
+  it ('should return true if multiple words entered are anagrams') do
+    phrase = Word.new('Astronomer')
+  expect (phrase.antigram?('Dip flip hip stop')).to(eq(false))
+  end
+
 end
