@@ -8,6 +8,7 @@ class Word
   def initialize(word)
       @word = word
       @anagram = true
+      @antigram = false
       @dictionary = Dictionary.from_file('./lib/dictionary.txt')
   end
 
@@ -42,6 +43,21 @@ class Word
       @anagram = false
     end
     @anagram
+  end
+
+  def antigram?(other_word)
+    word_array = @word.downcase.split('')
+    other_word_array = other_word.downcase.split('')
+    x = 0
+    while (x < word_array.length)
+      word_array.delete_if do |letter|
+        if ((other_word_array[x] != letter) & (word_array.length > 0))
+          @antigram = true
+          x += 1
+        end
+      end
+    end
+    @antigram
   end
 
 
