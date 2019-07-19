@@ -8,7 +8,7 @@ class Word
   def initialize(word)
       @word = word
       @anagram = true
-      @antigram = false
+      @antigram = true
       @dictionary = Dictionary.from_file('./lib/dictionary.txt')
   end
 
@@ -50,10 +50,13 @@ class Word
     other_word_array = other_word.downcase.split('')
     x = 0
     while (x < word_array.length)
-      word_array.delete_if do |letter|
-        if ((other_word_array[x] != letter) & (word_array.length > 0))
+      word_array.each do |letter|
+        if ((other_word_array[x] != letter) & (word_array.length > 0) & (@antigram === true))
           @antigram = true
           x += 1
+        elsif ((other_word_array[x] === letter))
+          @antigram = false
+          return @antigram
         end
       end
     end
