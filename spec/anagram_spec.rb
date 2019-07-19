@@ -22,4 +22,9 @@ describe('#anagram/antigram finder') do
   it ('should return true if the word is an antigram') do
   expect(ripped.antigram?('sock')).to(eq(true))
   end
+
+  it ('should return false if the word is not an antigram') do
+  expect(ripped.antigram?('dip')).to(eq(false))
+  end
+
 end
