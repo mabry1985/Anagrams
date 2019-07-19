@@ -29,7 +29,6 @@ class Word
       x = 0
       while (x < word_array.length)
         other_word_array.delete_if do |letter|
-          binding.pry
           if ((word_array[x] === letter) & (other_word_array.length > 0))
             @anagram = true
             x += 1
@@ -50,30 +49,35 @@ class Word
     word_array = @word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
     other_word_array = other_word.downcase.gsub(/[\s+“”’.…!,?'"$-=()#]/, '').split('')
     # binding.pry
-    x = 0
     if word_array.length >= other_word_array.length
+      x = 0
       while (x < word_array.length)
-        word_array.each do |letter|
-          binding.pry
-          if ((other_word_array[x] != letter) & (@antigram === true))
-            @antigram = true
-            x += 1
-          elsif ((other_word_array[x] === letter))
-            @antigram = false
-            return @antigram
+          word_array.each do |letter|
+            other_word_array.each do |i|
+            # binding.pry
+              if ((i != letter) & (@antigram === true))
+                @antigram = true
+                x += 1
+              elsif ((i === letter))
+                @antigram = false
+                return @antigram
+              end
+            end
           end
-        end
       end
     elsif word_array.length < other_word_array.length
+      x = 0
       while (x < other_word_array.length)
         other_word_array.each do |letter|
-          if ((word_array[x] != letter) & (@antigram === true))
-            binding.pry
-            @antigram = true
-            x += 1
-          elsif ((word_array[x] === letter))
-            @antigram = false
-            return @antigram
+          word_array.each do |i|
+            if ((i != letter) & (@antigram === true))
+              # binding.pry
+              @antigram = true
+              x += 1
+            elsif ((i === letter))
+              @antigram = false
+              return @antigram
+            end
           end
         end
       end
