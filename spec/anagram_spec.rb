@@ -12,4 +12,7 @@ describe('#anagram finder') do
   it ('should return true even if the words entered are differently cased') do
   expect(ripped.anagram?('Dipper')).to(eq(true))
   end
+  it ('should return an error if the word does not exist') do
+  expect(ripped.is_it_a_word?('ripped', 'dioppeee')).to(eq("According to my research one of these is not a real word, if you think you've recieved this error for a real word email mabry1985@gmail.com"))
+  end
 end

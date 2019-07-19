@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
   require 'pry'
   require 'ruby-dictionary'
-  dictionary = Dictionary.from_file('./lib/dictionary.txt')
 
 class Word
   attr_accessor(:word, :anagram)
@@ -9,6 +8,17 @@ class Word
   def initialize(word)
       @word = word
       @anagram = true
+      @dictionary = Dictionary.from_file('./lib/dictionary.txt')
+  end
+
+  def is_it_a_word?(word, other_word)
+      word_exists = @dictionary.exists?(word)
+      other_word_exists = @dictionary.exists?(other_word)
+      if ((word_exists === true) & (other_word_exists === true))
+      else
+      error_message = "According to my research one of these is not a real word, if you think you've recieved this error for a real word email mabry1985@gmail.com"
+      error_message
+      end
   end
 
   def anagram?(other_word)
