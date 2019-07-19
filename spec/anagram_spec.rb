@@ -9,4 +9,7 @@ describe('#anagram finder') do
   it ('should return false if the words are not anagrams') do
   expect(ripped.anagram?('horse')).to(eq(false))
   end
+  it ('should return true even if the words entered are differently cased') do
+  expect(ripped.anagram?('Dipper')).to(eq(true))
+  end
 end

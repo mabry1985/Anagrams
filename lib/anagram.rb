@@ -12,8 +12,8 @@ class Word
   end
 
   def anagram?(other_word)
-    word_array = @word.split('')
-    other_word_array = other_word.split('')
+    word_array = @word.downcase.split('')
+    other_word_array = other_word.downcase.split('')
     if @word.length === other_word.length
       x = 0
       while (x < word_array.length)
